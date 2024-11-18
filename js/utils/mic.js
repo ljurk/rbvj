@@ -12,7 +12,7 @@ function Microphone (_fft) {
     var audioContext = new AudioContext();
     var SAMPLE_RATE = audioContext.sampleRate;
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia;
 
     window.addEventListener('load', init, false);
 
@@ -29,7 +29,7 @@ function Microphone (_fft) {
 
     function startMic (context) {
 
-      navigator.getUserMedia({ audio: true }, processSound, error);
+      navigator.mediaDevices.getUserMedia({ audio: true }, processSound, error);
 
       function processSound (stream) {
 
