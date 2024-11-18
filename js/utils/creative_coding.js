@@ -1281,9 +1281,6 @@ function init() {
     mouseDown = false;
     if (typeof onMouseUp == 'function') onMouseUp();
   });
-  window.addEventListener('keydown', function(e) {
-    if (typeof onKeyDown == 'function') onKeyDown(e);
-  });
   window.addEventListener('keyup', function(e) {
     if (typeof onKeyUp == 'function') onKeyUp(e);
   });

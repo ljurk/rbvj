@@ -1,30 +1,24 @@
-
-
 function onKeyDown(event) {
+    console.log(event.key);
+    var key = event.key;
 
-		//console.log(event.keyCode);
-    var keyCode = event.keyCode;
-
-    // CHANGE FILE // keys a-z
-    if (keyCode >= 65 && keyCode <= 90) {
-      changeFile(keyCode - 65);
-
-      // CHANGE SET AND BANK // keys 0-9
-    } else if (keyCode >= 48 && keyCode <= 57) {
-
-			if(event.shiftKey) {
-	      changeSet(keyCode-48);
-			} else {
-				changeBank(keyCode-48);
-			}
-
-      // ~ SHOW MOUSE
-    } else if (keyCode == 192) {
-      showMouse();
+    if (key >= '0' && key <= '9') {
+        console.log("0-9");
+        // CHANGE SET AND BANK // keys 0-9
+        if (event.shiftKey) {
+            changeSet(parseInt(key, 10));
+        } else {
+            changeBank(parseInt(key, 10));
+        }
+    } else if (event.key === 'ArrowUp') {
+        // UP ARROW: Increment current_file and change
+        changeFile(++current_file);
+    } else if (event.key === 'ArrowDown') {
+        // DOWN ARROW: Decrement current_file and change
+        changeFile(--current_file);
     }
-
 }
 
 window.addEventListener('keydown', function(e) {
-    if (typeof onKeyDown == 'function') onKeyDown(e);
-  });
+    if (typeof onKeyDown === 'function') onKeyDown(e);
+});
